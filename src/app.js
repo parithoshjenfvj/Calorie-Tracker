@@ -5,6 +5,7 @@ const app = express();
 const authRoutes = require("./routes/auth.routes");
 const itemRoutes = require("./routes/item.routes");
 const tdeeRoutes = require("./routes/tdee.routes");
+const favoriteRoutes = require("./routes/favourite.routes");
 app.use(cors({
   origin: "http://localhost:5173",
   credentials: true
@@ -15,5 +16,6 @@ app.use(cookieParser());
 app.use("/auth", authRoutes);
 app.use("/items", itemRoutes); 
 app.use("/tdee", tdeeRoutes); 
+app.use("/favorites", favoriteRoutes);
 module.exports = app;
 
