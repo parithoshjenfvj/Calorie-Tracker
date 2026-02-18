@@ -17,6 +17,10 @@ const tdeeSchema=new mongoose.Schema({
         enum:["lightExercise", "moderateExercise", "heavyExercise"],
         required:true
     },
+    height:{
+        type:Number,
+        required:[true,"weight is required"]
+    },
     calculatedTdee:{
         type:Number,
         default:0
