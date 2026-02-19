@@ -64,10 +64,31 @@ async function addFavoriteToToday(req, res) {
   }
 }
 
+async function deleteFavourite(req, res) {
+  try {
+    const { favoriteId } = req.body;
+
+    const deleted = await favouriteSchema.findOneAndDelete({
+      _id: favoriteId,
+      userId: req.user.userId
+    });
+
+    if (!deleted) {
+      return res.status(404).json({ message: "Favorite not found" });
+    }
+
+    res.status(200).json({ message: "Item deleted successfully" });
+
+  } catch (error) {
+    res.status(500).json({ error: "Server error" });
+  }
+}
+
 
 
 module.exports={
     addFavourite,
     getFavourites,
-    addFavoriteToToday
+    addFavoriteToToday,
+    deleteFavourite
 }
